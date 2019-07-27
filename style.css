@@ -7,14 +7,14 @@ body {
     min-height: calc(100vh - 4em);
     margin: 0 auto;
     padding: 2em;
-    background-color: #001726;
+    background-color: #101010;
     border-color: #ffeded;
     border-left-style: solid;
     border-right-style: solid;
     border-width: 20px;
 }
 p {
-    color: #151515;
+    color: #f0f0f0;
     font-family: 'Roboto', sans-serif;
     font-size: 16pt;
     line-height: 1;
@@ -26,7 +26,7 @@ p.value-description {
 }
 p.question {
     margin: 16pt auto;
-    color: #252525;
+    color: #e0e0e0;
     font-family: 'Montserrat', sans-serif;
     font-weight: normal;
     width: 70%;
@@ -43,7 +43,7 @@ p.question {
 
 }
 h1 {
-    color: #151515;
+    color: #f0f0f0;
     font-family: 'Montserrat', sans-serif;
     font-size: 72pt;
     text-align: center;
@@ -52,7 +52,7 @@ h1 {
     margin-bottom: 0pt;
 }
 h2 {
-    color: #252525;
+    color: #e0e0e0;
     font-family: 'Montserrat', sans-serif;
     font-size: 36pt;
     line-height: 36pt;
@@ -127,7 +127,7 @@ div.bar {
     border-right-width: 1px;
     border-top-style: solid;
     border-bottom-style: solid;
-    border-color: #151515;
+    border-color: #f0f0f0;
     background-color: #ffeded;
     display: block;
     width: 50%;
@@ -136,7 +136,7 @@ div.text-wrapper {
     font-family: 'Montserrat', sans-serif;
     font-size: 36pt;
     line-height: 36pt;
-    color: #151515;
+    color: #f0f0f0;
     display: inline-block;
 }
 div.equality {
@@ -183,7 +183,7 @@ span.weight-300 {
     font-weight: 300;
 }
 canvas {
-    border-color: #353535;
+    border-color: #d0d0d0;
     border-style: solid;
     border-width: 2px;
     border-radius: 8pt;
