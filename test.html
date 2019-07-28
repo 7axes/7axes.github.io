@@ -1,0 +1,101 @@
+<head>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:400,700" rel="stylesheet">
+<link href='style.css' rel='stylesheet' type='text/css'>
+<title>7 Axes Test</title>
+</head>
+
+<body>
+<script type="application/javascript"
+        src="questions.js">
+</script>
+<h1>7 Axes</h1>
+<hr>
+<h2 style="text-align:center;" id="question-number">Loading...</h2>
+<p class="question" id="question-text"></p>
+<button class="button" onclick="next_question( 1.0)" style="background-color: #1b5e20;">Strongly Agree</button> <br>
+<button class="button" onclick="next_question( 0.5)" style="background-color: #4caf50;">Slightly Agree</button> <br>
+<button class="button" onclick="next_question( 0.0)" style="background-color: #bbbbbb;">Neutral</button> <br>
+<button class="button" onclick="next_question(-0.5)" style="background-color: #f44336;">Slightly Disagree</button> <br>
+<button class="button" onclick="next_question(-1.0)" style="background-color: #b71c1c;">Strongly Disagree</button> <br>
+<button class="small_button" onclick="prev_question()" id="back_button">Back</button>
+<button class="small_button_off" id="back_button_off">Back</button><br>
+
+<script>
+  var maxecon, maxcult, maxsoci, maxmora, maxbiol, maxcaus, maxhist; // Max Values
+  maxecon = maxcult = maxsoci = maxmora = maxbiol = maxcaus = maxhist = 0;
+  var econ, cult, soci, mora, biol, caus, hist; // Actual Scores
+  econ = cult = soci = mora = biol = caus = hist = 0;
+  var qn = 0; // Question Number
+  var pa = null; // Previous Answer
+  iq(); // Question
+  for (var i = 0; i < test.length; i++) {
+    maxecon += Math.abs(test[i].effect.econ)
+    maxcult += Math.abs(test[i].effect.cult)
+    maxsoci += Math.abs(test[i].effect.soci)
+    maxmora += Math.abs(test[i].effect.mora)
+    maxbiol += Math.abs(test[i].effect.biol)
+    maxcaus += Math.abs(test[i].effect.caus)
+    maxhist += Math.abs(test[i].effect.hist)
+  }
+  function iq() {
+    document.getElementById("question-text").innerHTML = test[qn].question;
+    document.getElementById("question-number").innerHTML = "Question " + (qn + 1) + " of " + (test.length);
+    if (pa == null) {
+      document.getElementById("back_button").style.display = 'none';
+      document.getElementById("back_button_off").style.display = 'block';
+    } else {
+      document.getElementById("back_button").style.display = 'block';
+      document.getElementById("back_button_off").style.display = 'none';
+    }
+  }
+  
+  function nq(mult) { // Next Question
+    econ =+ mult*test[qn].effect.econ
+    cult =+ mult*test[qn].effect.cult
+    soci =+ mult*test[qn].effect.soci
+    mora =+ mult*test[qn].effect.mora
+    biol =+ mult*test[qn].effect.biol
+    caus =+ mult*test[qn].effect.caus
+    hist =+ mult*test[qn].effect.hist
+    qn++;
+    pa = mult;
+    if (qn < test.length) {
+      iq();
+    } else {
+      results();
+    }
+  }
+  
+  function pq() { // Previous Question
+    if (pa == null) {
+      return;
+    }
+    qn--
+    econ -= pa * test[qn].effect.econ
+    cult -= pa * test[qn].effect.cult
+    soci -= pa * test[qn].effect.soci
+    mora -= pa * test[qn].effect.mora
+    biol -= pa * test[qn].effect.biol
+    caus -= pa * test[qn].effect.caus
+    hist -= pa * test[qn].effect.hist
+    pa = null;
+    iq();
+  }
+  
+  function score_calc(score,max) { // Score Calculator
+    return (100 * (max + score) / (2 * max)).toFixed(1)
+  }
+  
+  function results() { // Scores
+    location.href = `results.html`
+      + `?e=${score_calc(econ,maxecon)}`
+      + `?c=${score_calc(cult,maxcult)}`
+      + `?s=${score_calc(soci,maxsoci)}`
+      + `?m=${score_calc(mora,maxmora)}`
+      + `?b=${score_calc(biol,maxbiol)}`
+      + `?c=${score_calc(caus,maxcaus)}`
+      + `?h=${score_calc(hist,maxhist)}`
+  }
+    
+</script>
+</body>
