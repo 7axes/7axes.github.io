@@ -72,7 +72,7 @@
     return(NaN);
   }
   
-  function setBV(name, value) {
+  function setBV(name, value) { // Set Bar Value
     innerel = document.getElementById(name)
     outerel = document.getElementById("bar-" + name)
     outerel.style.width = (value + "%")
@@ -101,11 +101,11 @@
   }
   
   socialism = getQV("e")
-  modernism = getQV("c")
+  modernism = getQV("cu")
   egalitarianism = getQV("s")
   nihilism = getQV("m")
   environmentalism = getQV("b")
-  materialism = getQV("c")
+  materialism = getQV("ca")
   progressivism = getQV("h")
   laissez = (100 - socialism).toFixed(1)
   traditionalism = (100 - modernism).toFixed(1)
@@ -206,17 +206,17 @@
     if (modernism > 30) {ctx.fillText(modernism + "%", 130, 357.5)}
     if (egalitarianism > 30) {ctx.fillText(egalitarianism + "%", 130, 477.5)}
     if (nihilism > 30) {ctx.fillText(nihilism + "%", 130, 597.5)}
-    if (nihilism > 30) {ctx.fillText(environmentalism + "%", 130, 717.5)}
-    if (nihilism > 30) {ctx.fillText(materialism + "%", 130, 837.5)}
-    if (nihilism > 30) {ctx.fillText(progressivism + "%", 130, 957.5)}
+    if (environmentalism > 30) {ctx.fillText(environmentalism + "%", 130, 717.5)}
+    if (materialism > 30) {ctx.fillText(materialism + "%", 130, 837.5)}
+    if (progressivism > 30) {ctx.fillText(progressivism + "%", 130, 957.5)}
     ctx.textAlign="right"
     if (laissez > 30) {ctx.fillText(laissez + "%", 670, 237.5)}
     if (traditionalism > 30) {ctx.fillText(traditionalism + "%", 670, 357.5)}
     if (hierarchical > 30) {ctx.fillText(hierarchical + "%", 670, 477.5)}
     if (objectivism > 30) {ctx.fillText(objectivism + "%", 670, 597.5)}
-    if (hereditarianism > 30) {ctx.fillText(objectivism + "%", 670, 717.5)}
-    if (romanticism > 30) {ctx.fillText(objectivism + "%", 670, 837.5)}
-    if (cyclicism > 30) {ctx.fillText(objectivism + "%", 670, 957.5)}
+    if (hereditarianism > 30) {ctx.fillText(hereditarianism + "%", 670, 717.5)}
+    if (romanticism > 30) {ctx.fillText(romanticism + "%", 670, 837.5)}
+    if (cyclicism > 30) {ctx.fillText(cyclicism + "%", 670, 957.5)}
     
     ctx.font="300 30px Montserrat"
     ctx.fillText("7axes.github.io", 780, 60)
