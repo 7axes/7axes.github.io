@@ -1,0 +1,233 @@
+<head>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:400,700" rel="stylesheet">
+<link href='style.css' rel='stylesheet' type='text/css'>
+<title>7 Axes Results</title>
+</head>
+
+<script type="application/javascript"
+        src="ideologies.js">
+</script>
+
+<body>
+<h1>7 Axes</h1>
+<hr>
+
+<h1>Test Results</h1>
+
+<h2>Economic Axis: <span class="weight-300" id="economic-label"></span></h2>
+<div class="axis">
+    <div class="bar socialism" id="bar-socialism"><div class="text-wrapper" id="socialism"></div></div>
+    <div class="bar laissez" id="bar-laissez"><div class="text-wrapper" id="laissez"></div></div>
+</div>
+
+<h2>Cultural Axis: <span class="weight-300" id="cultural-label"></span></h2>
+<div class="axis">
+    <div class="bar modernism" id="bar-modernism"><div class="text-wrapper" id="modernism"></div></div>
+    <div class="bar traditionalism" id="bar-traditionalism"><div class="text-wrapper" id="traditionalism"></div></div>
+</div>
+
+<h2>Social Axis: <span class="weight-300" id="social-label"></span></h2>
+<div class="axis">
+    <div class="bar egalitarianism" id="bar-egalitarianism"><div class="text-wrapper" id="egalitarianism"></div></div>
+    <div class="bar hierarchical" id="bar-hierarchical"><div class="text-wrapper" id="hierarchical"></div></div>
+</div>
+
+<h2>Moral Axis: <span class="weight-300" id="moral-label"></span></h2>
+<div class="axis">
+    <div class="bar nihilism" id="bar-nihilism"><div class="text-wrapper" id="nihilism"></div></div>
+    <div class="bar objectivism" id="bar-objectivism"><div class="text-wrapper" id="objectivism"></div></div>
+</div>
+
+<h2>Biological Axis: <span class="weight-300" id="biological-label"></span></h2>
+<div class="axis">
+    <div class="bar environmentalism" id="bar-environmentalism"><div class="text-wrapper" id="environmentalism"></div></div>
+    <div class="bar hereditarianism" id="bar-hereditarianism"><div class="text-wrapper" id="hereditarianism"></div></div>
+</div>
+
+<h2>Causal Axis: <span class="weight-300" id="causal-label"></span></h2>
+<div class="axis">
+    <div class="bar materialism" id="bar-materialism"><div class="text-materialism" id="materialism"></div></div>
+    <div class="bar romanticism" id="bar-romanticism"><div class="text-wrapper" id="romanticism"></div></div>
+</div>
+
+<h2>Historical Axis: <span class="weight-300" id="historical-label"></span></h2>
+<div class="axis">
+    <div class="bar progressivism" id="bar-progressivism"><div class="text-wrapper" id="progressivism"></div></div>
+    <div class="bar cyclicism" id="bar-cyclicism"><div class="text-wrapper" id="cyclicism"></div></div>
+</div>
+
+<h2>Closest Ideology: <span class="weight-300" id="ideology-label"></span></h2>
+<hr/>
+<canvas id="banner" width=800 height=650 style="font-family:Montserrat"></canvas>
+<button class="button" onclick="location.href='index.html';" style="background-color: #2196f3;">Back</button> <br>
+
+<script>
+  function getQV(variable) { // Get Query Variable
+    var query = window.location.search.substring(1)
+    var vars = query.split("&")
+    for (var i=0;i<vars.length;i++) {
+      var pair = vars[i].split("=")
+      if(pair[0] == variable) {return pair[1]}
+    }
+    return(NaN);
+  }
+  
+  function setBV(name, value) {
+    innerel = document.getElementById(name)
+    outerel = document.getElementById("bar-" + name)
+    outerel.style.width = (value + "%")
+    innerel.innerHTML = (value + "%")
+    if (innerel.offsetWidth + 20 > outerel.offsetWidth) {
+      innerel.style.visibility = "hidden"
+    }
+  }
+  
+  econArray = ["Socialist","State Capitalist","Mixed Market","Capitalist","Laissez-Faire"]
+  cultArray = ["Modernist","","","","Traditionalist"]
+  sociArray = ["Egalitarian","","","","Hierarchical"]
+  moraArray = ["Nihilist","","","","Objectivist"]
+  biolArray = ["Environmentalist","","","","Hereditarian"]
+  causArray = ["Materialist","","","","Romanticist"]
+  histArray = ["Progessive","","","","Cyclical"]
+  
+  function setLabel(val,ary) { // Sets the Label of each Axes based on the above arrays
+    if (val > 100) { return "Stop, get some help" } else
+    if (val > 80) { return ary[0] } else
+    if (val > 60) { return ary[1] } else
+    if (val > 40) { return ary[2] } else
+    if (val > 20) { return ary[3] } else
+    if (val >= 0) { return ary[4] } else
+      { return "Stop, get some help" }
+  }
+  
+  socialism = getQV("s")
+  modernism = getQV("m")
+  egalitarianism = getQV("eg")
+  nihilism = getQV("n")
+  environmentalism = getQV("en")
+  materialism = getQV("m")
+  progressivism = getQV("p")
+  laissez = (100 - socialism).toFixed(1)
+  traditionalism = (100 - socialism).toFixed(1)
+  hierarchical = (100 - socialism).toFixed(1)
+  objectivistm = (100 - socialism).toFixed(1)
+  hereditarianism = (100 - socialism).toFixed(1)
+  romanticism = (100 - socialism).toFixed(1)
+  cyclicism = (100 - socialism).toFixed(1)
+  
+  setBV("socialism", socialism)
+  setBV("laissez-faire", laissez)
+  setBV("modernism", modernism)
+  setBV("traditionalism", traditionalism)
+  setBV("egalitarianism", egalitarianism)
+  setBV("hierarchical", hierarchical)
+  setBV("nihilism", nihilism)
+  setBV("objectivism", objectivism)
+  setBV("environmentalism", environmentalism)
+  setBV("hereditarianism", hereditarianism)
+  setBV("materialism", materialism)
+  setBV("romanticism", romanticism)
+  setBV("progressivism", progressivism)
+  setBV("cyclicism", cyclicism)
+  
+  document.getElementById("economic-label").innerHTML = setLabel(socialism, econArray)
+  document.getElementById("cultural-label").innerHTML = setLabel(modernism, econArray)
+  document.getElementById("social-label").innerHTML = setLabel(egalitarianism, econArray)
+  document.getElementById("moral-label").innerHTML = setLabel(nihilism, econArray)
+  document.getElementById("biological-label").innerHTML = setLabel(environmentalism, econArray)
+  document.getElementById("causal-label").innerHTML = setLabel(materialism, econArray)
+  document.getElementById("historical-label").innerHTML = setLabel(progressivism, econArray)
+  
+  function createImage(src, x, y, w, h) {
+    img = new Image ()
+    img.src = src
+    img.onLoad = function() {
+      ctx.drawImage(img, x, y, w, h)
+    }
+  }
+  
+  window.onload = function() {
+    var c = document.getElementById("banner")
+    var ctx = c.getContext("2d")
+    ctx.fillStyle = "#eeeeee"
+    ctx.fillRect(0,0,800,600)
+    
+    ctx.drawImage(img, 20, 170, 100, 100);
+    ctx.drawImage(img, 680, 170, 100, 100)
+    ctx.drawImage(img, 20, 290, 100, 100)
+    ctx.drawImage(img, 680, 290, 100, 100)
+    ctx.drawImage(img, 20, 410, 100, 100)
+    ctx.drawImage(img, 680, 410, 100, 100)
+    ctx.drawImage(img, 20, 530, 100, 100)
+    ctx.drawImage(img, 680, 530, 100, 100)
+    
+    ctx.fillStyle="#222222"
+    ctx.fillRect(120, 180, 560, 80)
+    ctx.fillRect(120, 300, 560, 80)
+    ctx.fillRect(120, 420, 560, 80)
+    ctx.fillRect(120, 540, 560, 80)
+    ctx.fillStyle="#f44336"
+    ctx.fillRect(120, 184, 5.6*socialism-2, 72)
+    ctx.fillStyle="#00897b"
+    ctx.fillRect(682-5.6*laissez, 184, 5.6*laissez-2, 72)
+    ctx.fillStyle="#ff9800"
+    ctx.fillRect(120, 304, 5.6*modernism-2, 72)
+    ctx.fillStyle="#03a9f4"
+    ctx.fillRect(682-5.6*traditionalism, 304, 5.6*traditionalism-2, 72)
+    ctx.fillStyle="#ffeb3b"
+    ctx.fillRect(120, 424, 5.6*egalitarianism-2, 72)
+    ctx.fillStyle="#3f51b5"
+    ctx.fillRect(682-5.6*hierarchical, 424, 5.6*hierarchical-2, 72)
+    ctx.fillStyle="#8bc34a"
+    ctx.fillRect(120, 544, 5.6*nihilism-2, 72)
+    ctx.fillStyle="#9c27b0"
+    ctx.fillRect(682-5.6*objectivism, 544, 5.6*objectivism-2, 72)
+    ctx.fillStyle="#8bc34a"
+    ctx.fillRect(120, 664, 5.6*environmentalism-2, 72)
+    ctx.fillStyle="#9c27b0"
+    ctx.fillRect(682-5.6*objectivism, 664, 5.6*hereditarianism-2, 72)
+    ctx.fillStyle="#8bc34a"
+    ctx.fillRect(120, 784, 5.6*materialism-2, 72)
+    ctx.fillStyle="#9c27b0"
+    ctx.fillRect(682-5.6*romanticism, 784, 5.6*romanticism-2, 72)
+    ctx.fillStyle="#8bc34a"
+    ctx.fillRect(120, 904, 5.6*progressivism-2, 72)
+    ctx.fillStyle="#9c27b0"
+    ctx.fillRect(682-5.6*cyclicism, 904, 5.6*cyclicism-2, 72)
+    ctx.fillStyle="#222222"
+    ctx.font="700 80px Montserrat"
+    ctx.textAlign="left"
+    ctx.fillText("7 Axes", 20, 90)
+    ctx.font="50px Montserrat"
+    ctx.fillText(ideology, 20, 140)
+    
+    ctx.textAlign="left"
+    if (socialism > 30) {ctx.fillText(socialism + "%", 130, 237.5)}
+    if (modernism > 30) {ctx.fillText(modernism + "%", 130, 357.5)}
+    if (egalitarianism > 30) {ctx.fillText(egalitarianism + "%", 130, 477.5)}
+    if (nihilism > 30) {ctx.fillText(nihilism + "%", 130, 597.5)}
+    if (nihilism > 30) {ctx.fillText(environmentalism + "%", 130, 717.5)}
+    if (nihilism > 30) {ctx.fillText(materialism + "%", 130, 837.5)}
+    if (nihilism > 30) {ctx.fillText(progressivism + "%", 130, 957.5)}
+    ctx.textAlign="right"
+    if (laissez > 30) {ctx.fillText(laissez + "%", 670, 237.5)}
+    if (traditionalism > 30) {ctx.fillText(traditionalism + "%", 670, 357.5)}
+    if (hierarchical > 30) {ctx.fillText(hierarchical + "%", 670, 477.5)}
+    if (objectivism > 30) {ctx.fillText(objectivism + "%", 670, 597.5)}
+    if (hereditarianism > 30) {ctx.fillText(objectivism + "%", 670, 717.5)}
+    if (romanticism > 30) {ctx.fillText(objectivism + "%", 670, 837.5)}
+    if (cyclicism > 30) {ctx.fillText(objectivism + "%", 670, 957.5)}
+    
+    ctx.font="300 30px Montserrat"
+    ctx.fillText("7axes.github.io", 780, 60)
+    ctx.textAlign="center"
+    ctx.fillText("Economic Axis: " + document.getElementById("economic-label").innerHTML, 400, 175)
+    ctx.fillText("Cultural Axis: " + document.getElementById("cultural-label").innerHTML, 400, 295)
+    ctx.fillText("Social Axis: " + document.getElementById("social-label").innerHTML, 400, 415)
+    ctx.fillText("Moral Axis: " + document.getElementById("moral-label").innerHTML, 400, 535)
+    ctx.fillText("Biological Axis: " + document.getElementById("biological-label").innerHTML, 400, 655)
+    ctx.fillText("Causal Axis: " + document.getElementById("causal-label").innerHTML, 400, 775)
+    ctx.fillText("Historical Axis: " + document.getElementById("historical-label").innerHTML, 400, 895)
+  }
+</script>
+</body>
