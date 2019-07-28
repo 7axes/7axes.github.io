@@ -1,4 +1,4 @@
-questions = [
+"questions" = [
   {
     "question": "this is a test of the emergency broadcast system"
     "effect": {
