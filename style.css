@@ -40,7 +40,9 @@ p.question {
     justify-content: center;
     align-items: center;
     text-align: center;
-
+}
+p.sub {
+    text-align: center;
 }
 h1 {
     color: #f0f0f0;
