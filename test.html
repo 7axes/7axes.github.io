@@ -28,18 +28,18 @@
   var qn = 0; // Question Number
   var pa = null; // Previous Answer
   iq(); // Question
-  for (var i = 0; i < test.length; i++) {
-    maxecon += Math.abs(test[i].effect.econ)
-    maxcult += Math.abs(test[i].effect.cult)
-    maxsoci += Math.abs(test[i].effect.soci)
-    maxmora += Math.abs(test[i].effect.mora)
-    maxbiol += Math.abs(test[i].effect.biol)
-    maxcaus += Math.abs(test[i].effect.caus)
-    maxhist += Math.abs(test[i].effect.hist)
+  for (var i = 0; i < questions.length; i++) {
+    maxecon += Math.abs(questions[i].effect.econ)
+    maxcult += Math.abs(questions[i].effect.cult)
+    maxsoci += Math.abs(questions[i].effect.soci)
+    maxmora += Math.abs(questions[i].effect.mora)
+    maxbiol += Math.abs(questions[i].effect.biol)
+    maxcaus += Math.abs(questions[i].effect.caus)
+    maxhist += Math.abs(questions[i].effect.hist)
   }
   function iq() {
-    document.getElementById("question-text").innerHTML = test[qn].question;
-    document.getElementById("question-number").innerHTML = "Question " + (qn + 1) + " of " + (test.length);
+    document.getElementById("question-text").innerHTML = questions[qn].question;
+    document.getElementById("question-number").innerHTML = "Question " + (qn + 1) + " of " + (questions.length);
     if (pa == null) {
       document.getElementById("back_button").style.display = 'none';
       document.getElementById("back_button_off").style.display = 'block';
@@ -50,16 +50,16 @@
   }
   
   function nq(mult) { // Next Question
-    econ =+ mult*test[qn].effect.econ
-    cult =+ mult*test[qn].effect.cult
-    soci =+ mult*test[qn].effect.soci
-    mora =+ mult*test[qn].effect.mora
-    biol =+ mult*test[qn].effect.biol
-    caus =+ mult*test[qn].effect.caus
-    hist =+ mult*test[qn].effect.hist
+    econ =+ mult*questions[qn].effect.econ
+    cult =+ mult*questions[qn].effect.cult
+    soci =+ mult*questions[qn].effect.soci
+    mora =+ mult*questions[qn].effect.mora
+    biol =+ mult*questions[qn].effect.biol
+    caus =+ mult*questions[qn].effect.caus
+    hist =+ mult*questions[qn].effect.hist
     qn++;
     pa = mult;
-    if (qn < test.length) {
+    if (qn < questions.length) {
       iq();
     } else {
       results();
@@ -71,13 +71,13 @@
       return;
     }
     qn--
-    econ -= pa * test[qn].effect.econ
-    cult -= pa * test[qn].effect.cult
-    soci -= pa * test[qn].effect.soci
-    mora -= pa * test[qn].effect.mora
-    biol -= pa * test[qn].effect.biol
-    caus -= pa * test[qn].effect.caus
-    hist -= pa * test[qn].effect.hist
+    econ -= pa * questions[qn].effect.econ
+    cult -= pa * questions[qn].effect.cult
+    soci -= pa * questions[qn].effect.soci
+    mora -= pa * questions[qn].effect.mora
+    biol -= pa * questions[qn].effect.biol
+    caus -= pa * questions[qn].effect.caus
+    hist -= pa * questions[qn].effect.hist
     pa = null;
     iq();
   }
