@@ -141,42 +141,72 @@ div.text-wrapper {
     color: #f0f0f0;
     display: inline-block;
 }
-div.equality {
+div.socialism {
     background-color: #f44336;
     text-align: left;
     border-right-style: solid;
 }
-div.wealth {
+div.laissez {
     background-color: #00897b;
     text-align: right;
     border-left-style: solid;
 }
-div.liberty {
+div.modernism {
     background-color: #ffeb3b;
     text-align: left;
     border-right-style: solid;
 }
-div.authority {
+div.traditionalism {
     background-color: #3f51b5;
     text-align: right;
     border-left-style: solid;
 }
-div.peace {
+div.egalitarianism {
     background-color: #03a9f4;
     text-align: right;
     border-left-style: solid;
 }
-div.might {
+div.hierarchical {
     background-color: #ff9800;
     text-align: left;
     border-right-style: solid;
 }
-div.progress {
+div.nihilism {
     background-color: #9c27b0;
     text-align: right;
     border-left-style: solid;
 }
-div.tradition {
+div.objectivism {
+    background-color: #8bc34a;
+    text-align: left;
+    border-right-style: solid;
+}
+div.environmentalism, {
+    background-color: #9c27b0;
+    text-align: right;
+    border-left-style: solid;
+}
+div.hereditarianism {
+    background-color: #8bc34a;
+    text-align: left;
+    border-right-style: solid;
+}
+div.materialism {
+    background-color: #9c27b0;
+    text-align: right;
+    border-left-style: solid;
+}
+div.romanticism {
+    background-color: #8bc34a;
+    text-align: left;
+    border-right-style: solid;
+}
+div.progressivism {
+    background-color: #9c27b0;
+    text-align: right;
+    border-left-style: solid;
+}
+div.cyclicism {
     background-color: #8bc34a;
     text-align: left;
     border-right-style: solid;
