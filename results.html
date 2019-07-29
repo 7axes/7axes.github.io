@@ -136,5 +136,22 @@
   document.getElementById("biological-label").innerHTML = setLabel(environmentalism, biolArray)
   document.getElementById("causal-label").innerHTML = setLabel(materialism, causArray)
   document.getElementById("historical-label").innerHTML = setLabel(progressivism, histArray)
+        
+  ideology = ""
+  ideodist = Infinity
+  for (var i = 0; i < ideologies.length; i++) {
+    dist = 0
+    dist += Math.pow(Math.abs(ideologies[i].stats.econ - socialism), 2)
+    dist += Math.pow(Math.abs(ideologies[i].stats.cult - modernism), 2
+    dist += Math.pow(Math.abs(ideologies[i].stats.soci - egalitarianism), 2)
+    dist += Math.pow(Math.abs(ideologies[i].stats.mora - nihilism), 2)
+    dist += Math.pow(Math.abs(ideologies[i].stats.biol - environmentalism), 2)
+    dist += Math.pow(Math.abs(ideologies[i].stats.caus - materialism), 2)
+    dist += Math.pow(Math.abs(ideologies[i].stats.hist - progressivism), 2)
+    if (dist < ideodist) {
+          ideology = ideologies[i].name
+          ideodist = dist
+    }
+  }
 </script>
 </body>
