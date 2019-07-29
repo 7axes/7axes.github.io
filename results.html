@@ -58,7 +58,6 @@
 
 <h2>Closest Ideology: <span class="weight-300" id="ideology-label"></span></h2>
 <hr/>
-<canvas id="banner" width=800 height=650 style="font-family:Montserrat"></canvas>
 <button class="button" onclick="location.href='index.html';" style="background-color: #900202;">Back</button> <br>
 
 <script>
@@ -137,98 +136,5 @@
   document.getElementById("biological-label").innerHTML = setLabel(environmentalism, biolArray)
   document.getElementById("causal-label").innerHTML = setLabel(materialism, causArray)
   document.getElementById("historical-label").innerHTML = setLabel(progressivism, histArray)
-  
-  function createImage(src, x, y, w, h) {
-    img = new Image ()
-    img.src = src
-    img.onLoad = function() {
-      ctx.drawImage(img, x, y, w, h)
-    }
-  }
-  
-  window.onload = function() {
-    var c = document.getElementById("banner")
-    var ctx = c.getContext("2d")
-    ctx.fillStyle = "#eeeeee"
-    ctx.fillRect(0,0,800,600)
-    
-    ctx.drawImage(img, 20, 170, 100, 100);
-    ctx.drawImage(img, 680, 170, 100, 100)
-    ctx.drawImage(img, 20, 290, 100, 100)
-    ctx.drawImage(img, 680, 290, 100, 100)
-    ctx.drawImage(img, 20, 410, 100, 100)
-    ctx.drawImage(img, 680, 410, 100, 100)
-    ctx.drawImage(img, 20, 530, 100, 100)
-    ctx.drawImage(img, 680, 530, 100, 100)
-    
-    ctx.fillStyle="#222222"
-    ctx.fillRect(120, 180, 560, 80)
-    ctx.fillRect(120, 300, 560, 80)
-    ctx.fillRect(120, 420, 560, 80)
-    ctx.fillRect(120, 540, 560, 80)
-    ctx.fillStyle="#f44336"
-    ctx.fillRect(120, 184, 5.6*socialism-2, 72)
-    ctx.fillStyle="#00897b"
-    ctx.fillRect(682-5.6*laissez, 184, 5.6*laissez-2, 72)
-    ctx.fillStyle="#ff9800"
-    ctx.fillRect(120, 304, 5.6*modernism-2, 72)
-    ctx.fillStyle="#03a9f4"
-    ctx.fillRect(682-5.6*traditionalism, 304, 5.6*traditionalism-2, 72)
-    ctx.fillStyle="#ffeb3b"
-    ctx.fillRect(120, 424, 5.6*egalitarianism-2, 72)
-    ctx.fillStyle="#3f51b5"
-    ctx.fillRect(682-5.6*hierarchical, 424, 5.6*hierarchical-2, 72)
-    ctx.fillStyle="#8bc34a"
-    ctx.fillRect(120, 544, 5.6*nihilism-2, 72)
-    ctx.fillStyle="#9c27b0"
-    ctx.fillRect(682-5.6*objectivism, 544, 5.6*objectivism-2, 72)
-    ctx.fillStyle="#8bc34a"
-    ctx.fillRect(120, 664, 5.6*environmentalism-2, 72)
-    ctx.fillStyle="#9c27b0"
-    ctx.fillRect(682-5.6*hereditarianism, 664, 5.6*hereditarianism-2, 72)
-    ctx.fillStyle="#8bc34a"
-    ctx.fillRect(120, 784, 5.6*materialism-2, 72)
-    ctx.fillStyle="#9c27b0"
-    ctx.fillRect(682-5.6*romanticism, 784, 5.6*romanticism-2, 72)
-    ctx.fillStyle="#8bc34a"
-    ctx.fillRect(120, 904, 5.6*progressivism-2, 72)
-    ctx.fillStyle="#9c27b0"
-    ctx.fillRect(682-5.6*cyclicism, 904, 5.6*cyclicism-2, 72)
-    ctx.fillStyle="#222222"
-    ctx.font="700 80px Montserrat"
-    ctx.textAlign="left"
-    ctx.fillText("7 Axes", 20, 90)
-    ctx.font="50px Montserrat"
-    ctx.fillText(ideology, 20, 140)
-    
-    ctx.textAlign="left"
-    if (socialism > 30) {ctx.fillText(socialism + "%", 130, 237.5)}
-    if (modernism > 30) {ctx.fillText(modernism + "%", 130, 357.5)}
-    if (egalitarianism > 30) {ctx.fillText(egalitarianism + "%", 130, 477.5)}
-    if (nihilism > 30) {ctx.fillText(nihilism + "%", 130, 597.5)}
-    if (environmentalism > 30) {ctx.fillText(environmentalism + "%", 130, 717.5)}
-    if (materialism > 30) {ctx.fillText(materialism + "%", 130, 837.5)}
-    if (progressivism > 30) {ctx.fillText(progressivism + "%", 130, 957.5)}
-    
-    ctx.textAlign="right"
-    if (laissez > 30) {ctx.fillText(laissez + "%", 670, 237.5)}
-    if (traditionalism > 30) {ctx.fillText(traditionalism + "%", 670, 357.5)}
-    if (hierarchical > 30) {ctx.fillText(hierarchical + "%", 670, 477.5)}
-    if (objectivism > 30) {ctx.fillText(objectivism + "%", 670, 597.5)}
-    if (hereditarianism > 30) {ctx.fillText(hereditarianism + "%", 670, 717.5)}
-    if (romanticism > 30) {ctx.fillText(romanticism + "%", 670, 837.5)}
-    if (cyclicism > 30) {ctx.fillText(cyclicism + "%", 670, 957.5)}
-    
-    ctx.font="300 30px Montserrat"
-    ctx.fillText("7axes.github.io", 780, 60)
-    ctx.textAlign="center"
-    ctx.fillText("Economic Axis: " + document.getElementById("economic-label").innerHTML, 400, 175)
-    ctx.fillText("Cultural Axis: " + document.getElementById("cultural-label").innerHTML, 400, 295)
-    ctx.fillText("Social Axis: " + document.getElementById("social-label").innerHTML, 400, 415)
-    ctx.fillText("Moral Axis: " + document.getElementById("moral-label").innerHTML, 400, 535)
-    ctx.fillText("Biological Axis: " + document.getElementById("biological-label").innerHTML, 400, 655)
-    ctx.fillText("Causal Axis: " + document.getElementById("causal-label").innerHTML, 400, 775)
-    ctx.fillText("Historical Axis: " + document.getElementById("historical-label").innerHTML, 400, 895)
-  }
 </script>
 </body>
